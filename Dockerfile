@@ -1,10 +1,9 @@
-FROM php:8.2-apache
+FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
     git curl zip unzip \
     libpq-dev libxml2-dev \
-    libonig-dev \
-    nodejs npm \
+    libonig-dev nodejs npm \
     && docker-php-ext-install pdo pdo_pgsql mbstring xml
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -17,8 +16,6 @@ RUN composer install --no-dev --optimize-autoloader
 RUN npm install && npm run build
 RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
 
-RUN chown -R www-data:www-data /var/www/html/storage
+RUN chown -R www-data:www-data storage bootstrap/cache
 
-EXPOSE 8000
-
-CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=3000
