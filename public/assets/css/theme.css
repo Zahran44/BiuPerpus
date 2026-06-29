@@ -1,0 +1,264 @@
+/* theme.css */
+@import url('https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+:root {
+    --color-primary: #5B7B8A;
+    --color-secondary: #8DA9C4;
+    --color-accent: #C9D6E3;
+    --text-muted: #6B7C8A;
+}
+
+* {
+    font-family: 'Sofia Sans', 'Sansation', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    background-color: #fff;
+    color: var(--color-secondary);
+}
+
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    padding-top: 20px;
+    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    color: white;
+    transition: left 0.3s;
+}
+.sidebar a {
+    display: block;
+    padding: 12px 20px;
+    color: #ddd;
+    text-decoration: none;
+    border-left: 4px solid transparent;
+}
+.sidebar a:hover, .sidebar a.active {
+    background-color: rgb(15, 52, 96);
+    border-left-color: #e94560;
+    color: white;
+}
+
+/* Konten utama */
+.content {
+    margin-left: 250px;
+    padding: 30px;
+    width: calc(100% - 250px);
+    transition: margin-left 0.3s;
+}
+
+
+/* Elemen umum */
+.navbar, .card {
+    background-color: #fff;
+}
+.navbar-brand, .card-title, .display-5, .fw-bold, .text-color {
+    color: var(--color-primary) !important;
+}
+.nav-link, .lead, .card-text {
+    color: var(--text-muted) !important;
+}
+.nav-link:hover {
+    color: var(--color-primary) !important;
+}
+.btn-primary,
+.btn-success {
+    background-color: #168a5b;
+    border-color: #168a5b;
+    color: #fff;
+    transition: transform .2s;
+}
+.btn-primary:hover,
+.btn-success:hover {
+    background-color: #106f49;
+    border-color: #106f49;
+    color: #fff;
+    transform: scale(1.02);
+}
+.btn-outline-primary,
+.btn-outline-secondary {
+    background-color: transparent;
+    border-color: #168a5b;
+    color: #168a5b;
+    transition: transform .2s;
+}
+.btn-outline-primary:hover,
+.btn-outline-secondary:hover {
+    background-color: #168a5b;
+    border-color: #168a5b;
+    color: #fff;
+    transform: scale(1.02);
+}
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+}
+.btn-danger:hover {
+    background-color: #bb2d3b;
+    border-color: #bb2d3b;
+    color: #fff;
+}
+.btn-outline-danger {
+    background-color: transparent;
+    border-color: #dc3545;
+    color: #dc3545;
+}
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+    transform: scale(1.02);
+}
+.feature-card:hover, .favorit-card:hover {
+    transform: translateY(-5px);
+}
+.feature-card, .favorit-card {
+    transition: transform .3s;
+}/* Pastikan kontainer card memotong konten yang overflow */
+.card {
+    position: relative;
+    overflow: hidden;          /* potong isi yang melebihi */
+    border-radius: 12px;       
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+/* Gambar rata penuh, terpotong rapi */
+.card-img-top {
+    display: block;
+    width: 100%;
+    height: 150px;             /* sesuaikan tinggi kecil yang diinginkan */
+    object-fit: cover;
+}
+
+/* Body lebih ringkas */
+.card-body {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+}
+
+/* Judul dan teks dipaksa satu baris dengan elipsis */
+.card-title,
+.card-text,
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+
+/* Tombol-tombol kecil dan rapat */
+.card-body .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1;
+}
+
+/* Container tombol agar rapih */
+.card-body .d-flex.gap-1 {
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+/* Hover efek halus */
+.card:hover {
+    transform: translateY(-3px);
+}
+
+/* Kalau kamu pakai class custom untuk list-book */
+.list-book .card {
+    margin-bottom: 0.5rem;
+}
+
+/* utilitas untuk min-width */
+.min-w-0 {
+    min-width: 0 !important;
+}
+
+/* Mobile view */
+@media (max-width: 991.98px) {
+    .sidebar {
+        left: -250px;
+    }
+    .sidebar.active {
+        left: 0;
+    }
+    .content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+/* Login - Register */
+.login-container {
+    justify-content: center;
+    max-width: 1000px;
+    margin: 10vh;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.illustration {
+    background: #f6faff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.illustration img {
+    max-width: 100%;
+    height: auto;
+}
+
+.login-form {
+    padding: 2.5rem 1.5rem;
+}
+
+.btn-login {
+    background-color: #e0e0e0;
+    color: #444;
+    border: none;
+}
+
+.btn-login:enabled:hover {
+    background-color: #d0d0d0;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.social-btn {
+    border-radius: 10px;
+}
+
+.footer {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 2rem;
+    background: transparent;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    }
+
