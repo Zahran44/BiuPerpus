@@ -19,11 +19,6 @@ RUN php artisan config:cache && php artisan route:cache && php artisan view:cach
 
 RUN chown -R www-data:www-data /var/www/html/storage
 
-EXPOSE 80
+EXPOSE 8000
 
-ENV APACHE_RUN_USER www-data
-ENV APACHE_RUN_GROUP www-data
-
-CMD php artisan migrate --force && \
-    sed -i "s/80/${PORT:-80}/g" /etc/apache2/ports.conf /etc/apache2/sites-enabled/*.conf && \
-    apache2-foreground
+CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
